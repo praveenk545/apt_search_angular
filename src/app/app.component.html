@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="item1">
+    <h3>Airport Search</h3>
+     <span class="sz">Type an airport code or city name</span>
+  </div>
+</div>
+
+<section class="dropdown-cls">
+    <form>
+      <label for="city">From</label><br>
+      <input aria-label="Search Airport" placeholder="search" type="text" id="city" 
+      [formControl] = "searchFormControl"/>
+      @if(userData.length) {
+  <ul>
+    @for (u of userData; track u.city; let i = $index) {
+      <li [ngClass]="i==0? 'active':''">
+        <span>{{u.code}}</span>
+        <span>{{u.city}}</span>
+        <span>{{u.country}}</span>
+        <span class="name">{{u.name}}</span>
+      </li>
+    }
+  </ul>
+}
+@else {
+  <span class="nodata">No Data found</span>
+}
+    </form>
+</section>
