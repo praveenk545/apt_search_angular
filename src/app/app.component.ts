@@ -72,9 +72,14 @@ export class AppComponent implements OnInit {
       return info.slice(0,5);
     } else {
     this.airInfo.some((curr: any) => {
-            if(!info.includes(curr.code)) {
-              acc.push(curr);
-            }
+            // if(!info.includes(curr.code)) {
+            //   acc.push(curr);
+            // }
+            info.some((i:any)=>{
+              if(i.id !==curr.id){
+                acc.push(curr)
+              }
+            })
               if(acc?.length == getMin) return acc;   
       });
       return [...info, ...acc];
